@@ -1416,7 +1416,7 @@ document.querySelectorAll('.project-card').forEach((el, i) => {
     if (ts - lastShot > nextShot) {
       shooters.push(new Shooter());
       lastShot = ts;
-      nextShot = 5000 + Math.random() * 7000;
+      nextShot = 800 + Math.random() * 1200;
     }
     shooters.forEach(s => { s.update(); s.draw(); });
     shooters = shooters.filter(s => !s.dead());
