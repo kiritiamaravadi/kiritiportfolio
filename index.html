@@ -394,7 +394,7 @@ section {
 #projects { border-top: 1px solid var(--border); }
 .projects-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 24px;
 }
 .project-card {
@@ -413,10 +413,6 @@ section {
   border-color: rgba(59,130,246,0.4);
   box-shadow: 0 0 40px rgba(59,130,246,0.08), inset 0 0 40px rgba(59,130,246,0.02);
   transform: translateY(-3px);
-}
-.project-card.featured {
-  grid-column: span 2;
-  background: linear-gradient(135deg, var(--surface) 0%, rgba(59,130,246,0.04) 100%);
 }
 .project-type {
   font-family: 'DM Mono', monospace;
@@ -458,6 +454,67 @@ section {
 }
 .project-highlights li::before { content: '·'; position: absolute; left: 4px; color: var(--blue); font-size: 16px; top: -1px; }
 .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* ── EDUCATION ── */
+#education { border-top: 1px solid var(--border); }
+.edu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.edu-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 36px;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+.edu-card:hover {
+  border-color: rgba(59,130,246,0.4);
+  box-shadow: 0 0 40px rgba(59,130,246,0.06);
+}
+.edu-degree-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 8px;
+  display: flex; align-items: center; gap: 8px;
+}
+.edu-degree-label::before {
+  content: '';
+  display: inline-block;
+  width: 20px; height: 1px;
+  background: var(--blue);
+}
+.edu-degree {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--white);
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+}
+.edu-school {
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+.edu-meta {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  margin-bottom: 24px;
+  display: flex; align-items: center; gap: 8px;
+}
+.edu-sep { color: var(--border); }
+@media (max-width: 768px) {
+  .edu-grid { grid-template-columns: 1fr; }
+}
 
 /* ── CONTACT ── */
 #contact { border-top: 1px solid var(--border); }
@@ -578,7 +635,6 @@ footer .foot-note {
   section, .hero, footer { padding-left: 24px; padding-right: 24px; }
   .hero { padding-top: 100px; }
   .about-grid, .contact-inner, .projects-grid { grid-template-columns: 1fr; gap: 40px; }
-  .project-card.featured { grid-column: span 1; }
   .hero-meta { gap: 24px; flex-wrap: wrap; }
 }
 </style>
@@ -594,6 +650,7 @@ footer .foot-note {
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-status">Available · Dallas, TX</div>
@@ -845,7 +902,7 @@ footer .foot-note {
   </div>
   <div class="projects-grid">
 
-    <div class="project-card featured">
+    <div class="project-card">
       <div class="project-type">AI · LLM Engineering · AWS Serverless</div>
       <div class="project-title">AI-Powered Document Intelligence Pipeline</div>
       <p class="project-desc">
@@ -894,17 +951,57 @@ footer .foot-note {
       </div>
     </div>
 
-    <div class="project-card">
-      <div class="project-type">Education</div>
-      <div class="project-title">Academic Background</div>
-      <p class="project-desc">Strong foundations in systems, networks, and ML from two degrees across two continents.</p>
-      <ul class="project-highlights">
-        <li><strong style="color:var(--white)">MS Computer Science</strong> · UNC Charlotte, Jan 2023 – May 2024 · Networks, ML, Algorithms, DB Systems</li>
-        <li><strong style="color:var(--white)">BTech Computer Science</strong> · Guru Nanak Institutions, 2018–2022 · OS, Distributed Systems, Cloud, SE</li>
-      </ul>
-      <div class="project-tags">
-        <span class="tag">Charlotte, NC</span>
-        <span class="tag">Hyderabad, India</span>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Education</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="edu-grid">
+
+    <div class="edu-card">
+      <div class="edu-degree-label">Master of Science</div>
+      <div class="edu-degree">Computer Science</div>
+      <div class="edu-school">UNC Charlotte</div>
+      <div class="edu-meta">
+        <span class="edu-location">Charlotte, NC</span>
+        <span class="edu-sep">·</span>
+        <span class="edu-date">Jan 2023 – May 2024</span>
+      </div>
+      <div class="edu-courses">
+        <div class="skill-group-label">Coursework</div>
+        <div class="skill-tags">
+          <span class="tag">Machine Learning</span>
+          <span class="tag">Computer Networks</span>
+          <span class="tag">Algorithms</span>
+          <span class="tag">Database Systems</span>
+          <span class="tag">Distributed Systems</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-degree-label">Bachelor of Technology</div>
+      <div class="edu-degree">Computer Science & Engineering</div>
+      <div class="edu-school">Guru Nanak Institutions</div>
+      <div class="edu-meta">
+        <span class="edu-location">Hyderabad, India</span>
+        <span class="edu-sep">·</span>
+        <span class="edu-date">2018 – 2022</span>
+      </div>
+      <div class="edu-courses">
+        <div class="skill-group-label">Coursework</div>
+        <div class="skill-tags">
+          <span class="tag">Operating Systems</span>
+          <span class="tag">Cloud Computing</span>
+          <span class="tag">Software Engineering</span>
+          <span class="tag">Computer Architecture</span>
+          <span class="tag">Data Structures</span>
+        </div>
       </div>
     </div>
 
@@ -914,7 +1011,7 @@ footer .foot-note {
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-header">
-    <span class="section-num">04</span>
+    <span class="section-num">05</span>
     <h2 class="section-title">Contact</h2>
     <div class="section-line"></div>
   </div>
