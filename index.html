@@ -771,29 +771,6 @@ footer .foot-note {
   footer { flex-direction: column; gap: 8px; text-align: center; }
 }
 
-/* ── CUSTOM CURSOR ── */
-@media (pointer: fine) { body { cursor: none; } }
-#cursor {
-  position: fixed;
-  top: 0; left: 0;
-  width: 18px; height: 18px;
-  border-radius: 50%;
-  border: 1.5px solid var(--blue);
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0;
-  will-change: transform;
-  transition: width 0.18s ease, height 0.18s ease, background 0.18s ease,
-              border-color 0.18s ease, box-shadow 0.18s ease, opacity 0.25s ease;
-}
-#cursor.cursor-active { opacity: 1; }
-#cursor.cursor-hover {
-  width: 10px; height: 10px;
-  background: rgba(59,130,246,0.45);
-  border-color: var(--accent2);
-  box-shadow: 0 0 10px rgba(59,130,246,0.5), 0 0 20px rgba(59,130,246,0.2);
-}
-
 /* ── RESPONSIVE: SMALL MOBILE ── */
 @media (max-width: 480px) {
   .hero-name { font-size: clamp(38px, 12vw, 52px); }
@@ -809,7 +786,6 @@ footer .foot-note {
 <body>
 
 <canvas id="bg-canvas"></canvas>
-<div id="cursor"></div>
 
 <!-- NAV -->
 <nav>
@@ -1470,25 +1446,6 @@ document.querySelectorAll('.project-card').forEach((el, i) => {
 
   resize();
   requestAnimationFrame(loop);
-})();
-
-// ── 1. CUSTOM CURSOR ──
-(function () {
-  if (!window.matchMedia('(pointer: fine)').matches) return;
-  const cur = document.getElementById('cursor');
-
-  window.addEventListener('mousemove', e => {
-    cur.style.transform = `translate(${e.clientX - 9}px, ${e.clientY - 9}px)`;
-    cur.classList.add('cursor-active');
-  }, { passive: true });
-
-  document.addEventListener('mouseleave', () => cur.classList.remove('cursor-active'));
-  document.addEventListener('mouseenter', () => cur.classList.add('cursor-active'));
-
-  document.querySelectorAll('a, button, .tag, .contact-link').forEach(el => {
-    el.addEventListener('mouseenter', () => cur.classList.add('cursor-hover'));
-    el.addEventListener('mouseleave', () => cur.classList.remove('cursor-hover'));
-  });
 })();
 
 // ── 2. TEXT SCRAMBLE ──
