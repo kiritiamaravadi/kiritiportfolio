@@ -426,6 +426,47 @@ section {
 }
 .exp-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
 
+/* ── MILESTONE HIGHLIGHT ── */
+.milestone-highlight {
+  background: linear-gradient(135deg, rgba(34,212,234,0.08) 0%, rgba(59,130,246,0.05) 100%);
+  border: 1px solid rgba(34,212,234,0.3);
+  border-left: 3px solid var(--accent2);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin: 24px 0;
+  position: relative;
+  overflow: hidden;
+}
+.milestone-highlight::before {
+  content: '';
+  position: absolute; top: 0; right: 0;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(34,212,234,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.milestone-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent2);
+  margin-bottom: 12px;
+  font-weight: 600;
+  display: flex; align-items: center; gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+.milestone-text {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.8;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+.milestone-text strong { color: var(--white); font-weight: 600; }
+.milestone-text em { color: var(--accent2); font-style: italic; }
+
 /* ── PROJECTS ── */
 #projects { border-top: 1px solid var(--border); }
 .projects-grid {
@@ -993,6 +1034,20 @@ footer .foot-note {
           <div class="exp-dept">Contract Lifecycle Management · Financial Technology</div>
         </div>
         <div class="exp-date">Sep 2025 – Present</div>
+      </div>
+      <div class="milestone-highlight">
+        <div class="milestone-badge">🚀 Milestone: Live in Production</div>
+        <p class="milestone-text"><strong>Architected and shipped a secure external integration service from scratch</strong> — spec-first approach with comprehensive spec.md documentation, 100% TDD with integration tests, multi-service AWS infrastructure (EventBridge scheduler, Lambda, SQS, DynamoDB, S3, PostgreSQL, VPC proxies), and 2 months of rigorous testing. First team company-wide to successfully integrate external hosted applications using this architecture pattern. Deployed to production May 2026 with zero security risks. <em>Built with 1 partner engineer.</em></p>
+        <div class="milestone-tech" style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 6px;">
+          <span class="tag highlight">Spec-First Design</span>
+          <span class="tag highlight">Test-Driven Development</span>
+          <span class="tag highlight">Security-First Architecture</span>
+          <span class="tag">EventBridge Scheduler</span>
+          <span class="tag">VPC Proxies</span>
+          <span class="tag">DynamoDB</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Zero-Trust Integration</span>
+        </div>
       </div>
       <ul class="exp-bullets">
         <li>Software Engineer on a <strong>Contract Lifecycle Management</strong> platform — a microservices system handling vendor contract workflows from ingestion through approval, built across multiple services on AWS and deployed via infrastructure-as-code (CDK).</li>
